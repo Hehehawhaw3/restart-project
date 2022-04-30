@@ -1223,6 +1223,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite2, 
         mySprite.setVelocity(0, 0)
     }
 })
+info.player1.onLifeZero(function () {
+    game.splash("You survived " + time + " seconds")
+    game.over(false)
+})
 let enemy_y = 0
 let enemy_x = 0
 let loop1 = 0
@@ -1235,6 +1239,8 @@ let myEnemy: Sprite = null
 let mySprite: Sprite = null
 let not_true = false
 let speed = 0
+let time = 0
+time = 0
 speed = 25
 not_true = true
 mySprite = sprites.create(img`
@@ -1459,6 +1465,10 @@ forever(function () {
         myEnemy.follow(mySprite2)
         mySprite.setPosition(sprite_x - 10, sprite_y - 10)
     }
+})
+forever(function () {
+    time += 1
+    pause(1000)
 })
 forever(function () {
     myEnemy.follow(mySprite, speed)
